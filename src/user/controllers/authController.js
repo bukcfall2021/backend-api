@@ -1,3 +1,5 @@
-module.exports.login = async (req, res) => {
-  res.send("login");
-};
+const createController = require("../../global/utils/createController");
+
+module.exports.login = createController((req, res) => {
+  res.send("Hello");
+});
