@@ -1,19 +1,10 @@
-const Users = require('../../models/users')
-const Books = require('../../models/books')
+const UserModel = require("../models/users");
 
-const syncModels = async (sequelize) => {
+const syncModels = async (sequelize, app) => {
+  app.locals.db = {};
+  app.locals.db.User = sequelize.define("user", UserModel);
 
-    Users.hasMany(Books)
-    Books.hasOne(Users)
+  await sequelize.sync();
+};
 
-    sequelize.sync({ force: true })
-    .then((result) => {
-        console.log("Models Synced")
-    })
-    .catch(err => {
-        console.log("Error Occured: ", err)
-    })
-
-}
-
-module.exports = syncModels
+module.exports = syncModels;
