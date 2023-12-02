@@ -1,5 +1,6 @@
 const appConstants = require("../constants/appConstants");
 const { Sequelize } = require("sequelize");
+const syncModels = require("./syncModels");
 
 const sequelize = new Sequelize(appConstants.DATABASE_URL);
 
@@ -14,9 +15,8 @@ const connectToDB = async (app) => {
     await sequelize.authenticate();
     console.log("Connection has been established successfully.");
     console.log("syncing models...");
-    await syncModels(app);
-    console.log("All models synced.");
-
+    await syncModels(sequelize, app);
+    console.log("synced models");
     ok = true;
   } catch (e) {
     console.log("Error connecting to db : ", e);
@@ -25,7 +25,5 @@ const connectToDB = async (app) => {
 
   return ok;
 };
-
-const syncModels = async (app) => {};
 
 module.exports = { connectToDB, sequelize };
