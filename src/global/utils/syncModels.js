@@ -4,7 +4,7 @@ const syncModels = async (sequelize, app) => {
   app.locals.db = {};
   app.locals.db.User = sequelize.define("user", UserModel);
 
-  await sequelize.sync({ force: true });
+  await sequelize.sync();
 };
 
 module.exports = syncModels;

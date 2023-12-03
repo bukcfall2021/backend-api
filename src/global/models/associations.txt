@@ -1,0 +1,84 @@
+ASSOCIATIONS DEFINED ACCORDING TO THE FIRST REVISION OF ERD
+
+//    ASSOCIATIONS
+// User has one Address
+User.hasOne(Address, {
+  foreignKey: 'addressID',
+  as: 'address',
+});
+
+// User has one Wallet
+User.hasOne(Wallet, {
+  foreignKey: 'walletID',
+  as: 'wallet',
+});
+
+// User has many Reviews
+User.hasMany(Review, {
+  foreignKey: 'userID',
+  as: 'reviews',
+});
+
+// User has many Complaints
+User.hasMany(Complaint, {
+  foreignKey: 'userID',
+  as: 'complaints',
+});
+
+// User has many AvailedPromos
+User.hasMany(AvailedPromo, {
+  foreignKey: 'userID',
+  as: 'availedPromos',
+});
+
+// User has one Cart
+User.hasOne(Cart, {
+  foreignKey: 'userID',
+  as: 'cart',
+});
+
+// Complaint belongs to ComplaintType
+Complaint.belongsTo(ComplaintType, {
+  foreignKey: 'type',
+  as: 'complaintType',
+});
+
+// AvailedPromo belongs to Promo
+AvailedPromo.belongsTo(Promo, {
+  foreignKey: 'promoID',
+  as: 'promo',
+});
+
+// Item belongs to Category
+Item.belongsTo(Category, {
+  foreignKey: 'categoryID',
+  as: 'category',
+});
+
+// OrderItem belongs to Item
+OrderItem.belongsTo(Item, {
+  foreignKey: 'itemID',
+  as: 'item',
+});
+
+// Cart has many OrderItems
+Cart.hasMany(OrderItem, {
+  foreignKey: 'cartID',
+  as: 'orderItems',
+});
+
+module.exports = {
+  User,
+  Address,
+  Wallet,
+  Review,
+  Complaint,
+  ComplaintType,
+  Promo,
+  AvailedPromo,
+  Order,
+  Item,
+  Category,
+  OrderItem,
+  Cart
+};

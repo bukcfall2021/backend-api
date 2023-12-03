@@ -1,4 +1,5 @@
 const express = require("express");
+const { Model } = require("sequelize");
 
 const createController = (
   callback = (
@@ -7,7 +8,9 @@ const createController = (
       app: {
         ...express.request.app,
         locals: {
-          db: {},
+          db: {
+            User: Model,
+          },
         },
       },
     },
