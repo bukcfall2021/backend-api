@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
 // Review model
-const Review = sequelize.define('Review', {
+const Review = {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -15,6 +15,6 @@ const Review = sequelize.define('Review', {
       type: Sequelize.STRING,
       allowNull: false
     }
-  });
+  };
 
 module.exports = Review;

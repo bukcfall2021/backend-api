@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 // orderItem model
-const OrderItem = sequelize.define('OrderItem', {
+const OrderItem = {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -18,6 +18,6 @@ const OrderItem = sequelize.define('OrderItem', {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
-  });
+  };
 
 module.exports = OrderItem;

@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
 // Address model
-const Address = sequelize.define('Address', {
+const Address = {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -19,6 +19,6 @@ const Address = sequelize.define('Address', {
       type: Sequelize.STRING,
       allowNull: false
     }
-  });
+  };
 
 module.exports = Address;

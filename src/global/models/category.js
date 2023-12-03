@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
 // category model
-const Category = sequelize.define('Category', {
+const Category = {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -11,6 +11,6 @@ const Category = sequelize.define('Category', {
       type: Sequelize.STRING,
       allowNull: false,
     },
-  });
+  };
 
 module.exports = Category;
