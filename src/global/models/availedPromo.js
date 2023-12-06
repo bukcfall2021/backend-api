@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 // AvailedPromo model
-const AvailedPromo = sequelize.define('AvailedPromo', {
+const AvailedPromo = {
     userID: {
       type: Sequelize.STRING,
       allowNull: false
@@ -10,6 +10,6 @@ const AvailedPromo = sequelize.define('AvailedPromo', {
       type: Sequelize.INTEGER,
       allowNull: false
     }
-  });
+  };
 
 module.exports = AvailedPromo;

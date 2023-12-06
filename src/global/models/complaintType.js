@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 // ComplaintType model
-const ComplaintType = sequelize.define('ComplaintType', {
+const ComplaintType = {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -15,6 +15,6 @@ const ComplaintType = sequelize.define('ComplaintType', {
       type: Sequelize.STRING,
       allowNull: false
     }
-  });
+  };
   
 module.exports = ComplaintType;

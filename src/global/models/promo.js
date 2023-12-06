@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
 // Promo model
-const Promo = sequelize.define('Promo', {
+const Promo = {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -19,6 +19,6 @@ const Promo = sequelize.define('Promo', {
       type: Sequelize.DATE,
       allowNull: false
     }
-  });
+  };
 
 module.exports = Promo;

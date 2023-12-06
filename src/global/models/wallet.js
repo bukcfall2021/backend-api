@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
 // Wallet model
-const Wallet = sequelize.define('Wallet', {
+const Wallet = {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -11,6 +11,6 @@ const Wallet = sequelize.define('Wallet', {
       type: Sequelize.FLOAT,
       allowNull: false
     }
-  });
+  };
 
 module.exports = Wallet;

@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
 // item model
-const Item = sequelize.define('Item', {
+const Item = {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -26,6 +26,6 @@ const Item = sequelize.define('Item', {
         key: 'id',
       },
     },
-  });
+  };
 
 module.exports = Item;
