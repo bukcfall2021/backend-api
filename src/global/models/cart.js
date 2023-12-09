@@ -11,7 +11,6 @@ const Cart = {
     },
     orderedItemId: {
         type: DataTypes.UUID,
-        allowNull: false,
         refernces: {
             model: 'orderedItems',
             key: 'id',
