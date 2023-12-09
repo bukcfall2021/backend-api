@@ -3,8 +3,10 @@ const { Sequelize, DataTypes } = require("sequelize");
 // Rider model
 const Rider = {
     riderID: {
-        type: DataTypes.INTEGER,
-        primaryKey: true
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: UUIDV4,
     },
     name: DataTypes.STRING,
     email: DataTypes.STRING,

@@ -3,8 +3,10 @@ const { Sequelize, DataTypes } = require("sequelize");
 // Promo model
 const Promo = {
     promoID: {
-        type: DataTypes.INTEGER,
-        primaryKey: true
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: UUIDV4,
     },
     expiryDate: DataTypes.DATE,
     discountPercentage: DataTypes.FLOAT,

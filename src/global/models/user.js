@@ -3,8 +3,10 @@ const { Sequelize, DataTypes } = require("sequelize");
 // User model
 const User = {
     userID: {
-        type: DataTypes.INTEGER,
-        primaryKey: true
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: UUIDV4,
     },
     walletID: DataTypes.INTEGER,
     name: DataTypes.STRING,

@@ -3,8 +3,10 @@ const { Sequelize, DataTypes } = require("sequelize");
 //Variant model
 const Variant = {
     variantID: {
-        type: DataTypes.INTEGER,
-        primaryKey: true
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: UUIDV4,
     },
     variantTypeID: DataTypes.INTEGER,
     variantName: DataTypes.STRING,

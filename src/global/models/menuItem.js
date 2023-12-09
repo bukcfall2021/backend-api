@@ -3,8 +3,10 @@ const { Sequelize, DataTypes } = require("sequelize");
 // MenuItem model
 const MenuItem = {
     itemID: {
-        type: DataTypes.INTEGER,
-        primaryKey: true
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: UUIDV4,
     },
     name: DataTypes.STRING,
     description: DataTypes.STRING,

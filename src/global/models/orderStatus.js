@@ -3,8 +3,10 @@ const { Sequelize, DataTypes } = require("sequelize");
 // OrderStatus model
 const OrderStatus = {
     statusID: {
-        type: DataTypes.INTEGER,
-        primaryKey: true
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: UUIDV4,
     },
     statusName: DataTypes.STRING
 };
