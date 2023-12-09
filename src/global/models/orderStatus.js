@@ -1,12 +1,12 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
-// Cart model
-const Cart = {
-    cartID: {
+// OrderStatus model
+const OrderStatus = {
+    statusID: {
         type: DataTypes.INTEGER,
         primaryKey: true
     },
-    orderedItemID: DataTypes.INTEGER
+    statusName: DataTypes.STRING
 };
 
-module.exports = Cart;
+module.exports = OrderStatus;

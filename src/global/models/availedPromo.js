@@ -1,15 +1,10 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require("sequelize");
 
 // AvailedPromo model
 const AvailedPromo = {
-    userID: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    promoID: {
-      type: Sequelize.INTEGER,
-      allowNull: false
-    }
-  };
+    promoID: DataTypes.INTEGER,
+    userID: DataTypes.INTEGER
+};
 
 module.exports = AvailedPromo;
+
