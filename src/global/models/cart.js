@@ -1,14 +1,30 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 // Cart model
 const Cart = {
-    cartID: {
+
+    id: {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
-        defaultValue: UUIDV4,
+        defaultValue: DataTypes.UUIDV4,
     },
-    orderedItemID: DataTypes.INTEGER
+    orderedItemId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        refernces: {
+            model: 'orderedItems',
+            key: 'id',
+        }
+    },
+    userId: {
+        type: DataTypes.UUID,
+        allowNull: false, 
+        references: {
+            model: 'users',
+            key: 'id',
+        }
+    }
 };
 
 module.exports = Cart;

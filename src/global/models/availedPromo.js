@@ -1,10 +1,31 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const {DataTypes, Sequelize} = require('sequelize');
 
-// AvailedPromo model
 const AvailedPromo = {
-    promoID: DataTypes.INTEGER,
-    userID: DataTypes.INTEGER
+
+    userId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        primaryKey: true,
+        references: {
+            model: 'users',
+            key: 'id',
+        }
+    },
+    promoId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        primaryKey: true,
+        references: {
+            model: 'promos',
+            key: 'id',
+        }
+    },
+    availedAt: {
+        type: DataTypes.DATE,
+        defaultValue: Sequelize.NOW,
+        allowNull: false,
+    },
+
 };
 
-module.exports = AvailedPromo;
-
+module.exports = AvailedPromo
