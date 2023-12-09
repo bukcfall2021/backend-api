@@ -1,20 +1,18 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
-// User model
-const User = {
-    userID: {
+// Rider model
+const Rider = {
+    riderID: {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
         defaultValue: UUIDV4,
     },
-    walletID: DataTypes.INTEGER,
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     phone: DataTypes.STRING,
-    status: DataTypes.STRING,
-    dob: DataTypes.DATE
+    isAvailable: DataTypes.BOOLEAN
 };
 
-module.exports = User;
+module.exports = Rider;

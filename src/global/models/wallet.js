@@ -1,16 +1,15 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 
 // Wallet model
 const Wallet = {
-    id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
+    walletID: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: UUIDV4,
     },
-    balance: {
-      type: Sequelize.FLOAT,
-      allowNull: false
-    }
-  };
+    balance: DataTypes.FLOAT,
+    dateUpdated: DataTypes.DATE
+};
 
 module.exports = Wallet;

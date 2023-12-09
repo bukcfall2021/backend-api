@@ -1,19 +1,14 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 
-// cart model
+// Cart model
 const Cart = {
-    id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+    cartID: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: UUIDV4,
     },
-    userID: {
-      type: Sequelize.INTEGER,
-      references: {
-        model: User,
-        key: 'id',
-      },
-    },
-  };
+    orderedItemID: DataTypes.INTEGER
+};
 
 module.exports = Cart;

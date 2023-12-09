@@ -1,24 +1,16 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 
 // Address model
 const Address = {
-    id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
+    addressID: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: UUIDV4,
     },
-    houseNo: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    city: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    landmark: {
-      type: Sequelize.STRING,
-      allowNull: false
-    }
-  };
+    address: DataTypes.STRING,
+    city: DataTypes.STRING,
+    landmark: DataTypes.STRING
+};
 
 module.exports = Address;

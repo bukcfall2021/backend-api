@@ -1,15 +1,19 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize, DataTypes } = require("sequelize");
 
 // Order model
-  const Order = {
-    id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
+const Order = {
+    orderID: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false,
+        defaultValue: UUIDV4,
     },
-    status: {
-      type: Sequelize.STRING,
-      allowNull: false
-    }};
+    userID: DataTypes.INTEGER,
+    statusID: DataTypes.INTEGER,
+    riderID: DataTypes.INTEGER,
+    orderDate: DataTypes.DATE,
+    total: DataTypes.FLOAT,
+    estimatedTime: DataTypes.DATE
+};
 
 module.exports = Order;

@@ -1,16 +1,14 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
-// Promo model
-const Promo = {
-    promoID: {
+// OrderStatus model
+const OrderStatus = {
+    statusID: {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
         defaultValue: UUIDV4,
     },
-    expiryDate: DataTypes.DATE,
-    discountPercentage: DataTypes.FLOAT,
-    code: DataTypes.STRING
+    statusName: DataTypes.STRING
 };
 
-module.exports = Promo;
+module.exports = OrderStatus;
