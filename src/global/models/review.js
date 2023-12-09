@@ -1,17 +1,28 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 // Review model
 const Review = {
-    reviewID: {
+
+    id: {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
-        defaultValue: UUIDV4,
+        defaultValue: DataTypes.UUIDV4,
     },
-    userID: DataTypes.INTEGER,
-    rating: DataTypes.FLOAT,
+    userId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'users',
+            key: 'id'
+        }
+    },
+    rating: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
     comment: DataTypes.STRING,
-    date: DataTypes.DATE
+    
 };
 
 module.exports = Review;

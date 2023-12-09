@@ -1,15 +1,21 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 // OrderedItem model
 const OrderedItem = {
-    orderedItemID: {
+
+    id: {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
-        defaultValue: UUIDV4,
+        defaultValue: DataTypes.UUIDV4,
     },
-    quantity: DataTypes.INTEGER,
-    subtotal: DataTypes.FLOAT
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1,
+    },
+    subtotal: DataTypes.FLOAT,
+    
 };
 
 module.exports = OrderedItem;

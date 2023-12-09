@@ -1,18 +1,35 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 // MenuItem model
 const MenuItem = {
-    itemID: {
+    
+    id: {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
-        defaultValue: UUIDV4,
+        defaultValue: DataTypes.UUIDV4,
     },
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    price: DataTypes.FLOAT,
-    itemIMG: DataTypes.STRING,
-    isAvailable: DataTypes.BOOLEAN
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    description: {
+        type: DataTypes.STRING(500),
+        allowNull: false,
+    },
+    price: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+    },
+    itemIMG: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    isAvailable: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+    }
 };
 
 module.exports = MenuItem;

@@ -1,17 +1,28 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 //Variant model
 const Variant = {
-    variantID: {
+
+    id: {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
-        defaultValue: UUIDV4,
+        defaultValue: DataTypes.UUIDV4,
     },
-    variantTypeID: DataTypes.INTEGER,
-    variantName: DataTypes.STRING,
-    extraCharge: DataTypes.FLOAT,
-    isDefault: DataTypes.BOOLEAN
+    variantName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    extraCharge: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+    },
+    isDefault: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+    }
+    
 };
 
 module.exports = Variant;

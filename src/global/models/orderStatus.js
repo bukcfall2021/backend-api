@@ -1,14 +1,19 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 // OrderStatus model
 const OrderStatus = {
-    statusID: {
-        type: DataTypes.UUID,
+
+    id: {
+        type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
-        defaultValue: UUIDV4,
+        autoIncrement: true,
     },
-    statusName: DataTypes.STRING
+    statusName: {
+        type: DataTypes.STRING(10),
+        allowNull: false,
+    },
+    
 };
 
 module.exports = OrderStatus;

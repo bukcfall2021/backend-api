@@ -10,6 +10,18 @@ const createController = (
         locals: {
           db: {
             User: Model,
+            Address: Model,
+            Review: Model,
+            Wallet: Model,
+            Promo: Model,
+            AvailedPromo: Model,
+            Cart: Model,
+            Item: Model,
+            Variant: Model,
+            OrderedItem: Model,
+            Order: Model,
+            Rider: Model,
+            OrderStatus: Model,
           },
         },
       },

@@ -2,18 +2,47 @@ const { Sequelize, DataTypes } = require("sequelize");
 
 // Order model
 const Order = {
-    orderID: {
+
+    id: {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
-        defaultValue: UUIDV4,
+        defaultValue: DataTypes.UUIDV4,
     },
-    userID: DataTypes.INTEGER,
-    statusID: DataTypes.INTEGER,
-    riderID: DataTypes.INTEGER,
-    orderDate: DataTypes.DATE,
-    total: DataTypes.FLOAT,
-    estimatedTime: DataTypes.DATE
+    userId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'users',
+            key: 'id',
+        }
+    },
+    statusId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'order_statuses',
+            key: 'id',
+        }
+    },
+    riderId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'riders',
+            key: 'id'
+        }
+    },
+    orderDate: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.NOW,
+    },
+    total: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+    },
+    estimatedTime: DataTypes.TIME,
 };
 
 module.exports = Order;

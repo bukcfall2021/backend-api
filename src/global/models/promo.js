@@ -1,16 +1,27 @@
-const { Sequelize, DataTypes } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 // Promo model
 const Promo = {
-    promoID: {
+
+    id: {
         type: DataTypes.UUID,
         primaryKey: true,
         allowNull: false,
-        defaultValue: UUIDV4,
+        defaultValue: DataTypes.UUIDV4,
     },
-    expiryDate: DataTypes.DATE,
-    discountPercentage: DataTypes.FLOAT,
-    code: DataTypes.STRING
+    expiryDate: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
+    discountPercentage: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+    },
+    code: {
+        type: DataTypes.STRING(8),
+        allowNull: false,
+    },
+    
 };
 
 module.exports = Promo;
