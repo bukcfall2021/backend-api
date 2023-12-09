@@ -12,6 +12,10 @@ const RiderModel = require('../models/rider');
 const UserModel = require('../models/user');
 const VariantModel = require('../models/variant');
 const WalletModel = require('../models/wallet');
+const UserAddressModel = require('../models/userAddress');
+const ItemVariantModel = require('../models/itemVariant');
+const ItemOrderedItemModel = require('../models/itemOrderedItem');
+const OrderOrderedItemModel = require('../models/orderOrderedItem');
 
 const syncModels = async (sequelize, app) => {
 
@@ -32,6 +36,10 @@ const syncModels = async (sequelize, app) => {
   app.locals.db.Order = sequelize.define('order', OrderModel);
   app.locals.db.Rider = sequelize.define('rider', RiderModel);
   app.locals.db.OrderStatus = sequelize.define('order_status', OrderStatusModel, {timestamps: false});
+  app.locals.db.UserAddress = sequelize.define('user-address', UserAddressModel, {timestamps: false});
+  app.locals.db.ItemVariant = sequelize.define('item-variant', ItemVariantModel, {timestamps: false});
+  app.locals.db.ItemOrderedItem = sequelize.define('item-ordered_item', ItemOrderedItemModel, {timestamps: false});
+  app.locals.db.OrderOrderedItem = sequelize.define('order-ordered_item', OrderOrderedItemModel, {timestamps: false});
 
   // Aggregating tables
   await createAssociations(app.locals.db);
