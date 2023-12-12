@@ -4,7 +4,6 @@ const createController = require("../../../global/utils/createController");
 module.exports.login = createController(async (req, res) => {
 
   const User = req.app.locals.db.User;
-  const Cart = req.app.locals.db.Cart;
 
   try {
     const user = await User.create({

@@ -17,7 +17,15 @@ const Address = {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    landmark: DataTypes.STRING
+    landmark: DataTypes.STRING,
+    userId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'users',
+            key: 'id',
+        }
+    }
 };
 
 module.exports = Address;

@@ -2,7 +2,7 @@ const {createAssociations} = require('./associations');
 const AddressModel = require('../models/address');
 const AvailedPromoModel = require('../models/availedPromo');
 const CartModel = require('../models/cart');
-const MenuItemModel = require('../models/menuItem');
+const ItemModel = require('../models/item');
 const OrderModel = require('../models/order');
 const OrderedItemModel = require('../models/orderedItem');
 const OrderStatusModel = require('../models/orderStatus');
@@ -12,14 +12,11 @@ const RiderModel = require('../models/rider');
 const UserModel = require('../models/user');
 const VariantModel = require('../models/variant');
 const WalletModel = require('../models/wallet');
-const UserAddressModel = require('../models/userAddress');
-const ItemVariantModel = require('../models/itemVariant');
-const ItemOrderedItemModel = require('../models/itemOrderedItem');
-const OrderOrderedItemModel = require('../models/orderOrderedItem');
 
 const syncModels = async (sequelize, app) => {
 
   const queryInterface = sequelize.getQueryInterface();
+  await queryInterface.dropAllTables();
 
   //Use req.app.locals.db.ModelName to access a model for querying 
   app.locals.db = {};
@@ -28,24 +25,20 @@ const syncModels = async (sequelize, app) => {
   app.locals.db.Review = sequelize.define('review', ReviewModel);
   app.locals.db.Wallet = sequelize.define('wallet', WalletModel, {createdAt: false});
   app.locals.db.Promo = sequelize.define('promo', PromoModel);
-  app.locals.db.AvailedPromo = sequelize.define('availed_promo', AvailedPromoModel, {timestamps: false});
+  app.locals.db.AvailedPromo = sequelize.define('availed_promo', AvailedPromoModel);
   app.locals.db.Cart = sequelize.define('cart', CartModel, {timestamps: false});
-  app.locals.db.Item = sequelize.define('item', MenuItemModel);
+  app.locals.db.Item = sequelize.define('item', ItemModel);
   app.locals.db.Variant = sequelize.define('variant', VariantModel, {timestamps: false});
   app.locals.db.OrderedItem = sequelize.define('ordered_item', OrderedItemModel, {timestamps: false});
   app.locals.db.Order = sequelize.define('order', OrderModel);
   app.locals.db.Rider = sequelize.define('rider', RiderModel);
   app.locals.db.OrderStatus = sequelize.define('order_status', OrderStatusModel, {timestamps: false});
-  app.locals.db.UserAddress = sequelize.define('user-address', UserAddressModel, {timestamps: false});
-  app.locals.db.ItemVariant = sequelize.define('item-variant', ItemVariantModel, {timestamps: false});
-  app.locals.db.ItemOrderedItem = sequelize.define('item-ordered_item', ItemOrderedItemModel, {timestamps: false});
-  app.locals.db.OrderOrderedItem = sequelize.define('order-ordered_item', OrderOrderedItemModel, {timestamps: false});
 
   // Aggregating tables
   await createAssociations(app.locals.db);
 
   //If force: true, then all tables will be dropped, and data lost
-  await sequelize.sync({ force: false });
+  await sequelize.sync({ force: true });
 };
 
 module.exports = syncModels;

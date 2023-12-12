@@ -22,9 +22,13 @@ const AvailedPromo = {
     },
     availedAt: {
         type: DataTypes.DATE,
-        defaultValue: Sequelize.NOW,
         allowNull: false,
     },
+    availed: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false, 
+        defaultValue: false,
+    }
 
 };
 

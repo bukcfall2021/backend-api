@@ -24,6 +24,14 @@ const User = {
     },
     phone: DataTypes.INTEGER,
     userIMG: DataTypes.STRING,
+    walletId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        refernces: {
+            model: 'wallets',
+            key: 'id'
+        }
+    }
     
 };
 
