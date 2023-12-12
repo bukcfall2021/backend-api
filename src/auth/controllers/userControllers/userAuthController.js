@@ -1,8 +1,10 @@
-const createController = require("../../../global/utils/createController");
+const createController = require('../../../global/utils/createController');
 
-// /api/auth/user/login
+//api/auth/user/login
 module.exports.login = createController(async (req, res) => {
 
-    const User = req.app.locals.db.User
+    const User = req.app.locals.db.User;
+
+    
 
 });
