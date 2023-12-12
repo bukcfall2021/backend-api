@@ -39,7 +39,7 @@ const syncModels = async (sequelize, app) => {
   await createAssociations(app.locals.db);
 
   //If force: true, then all tables will be dropped, and data lost
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: false });
 };
 
 module.exports = syncModels;
