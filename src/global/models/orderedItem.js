@@ -9,6 +9,22 @@ const OrderedItem = {
         allowNull: false,
         defaultValue: DataTypes.UUIDV4,
     },
+    orderId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'orders',
+            key: 'id'
+        }
+    },
+    itemId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'items',
+            key: 'id',
+        }
+    },
     quantity: {
         type: DataTypes.INTEGER,
         allowNull: false,

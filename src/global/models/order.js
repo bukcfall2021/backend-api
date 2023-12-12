@@ -17,7 +17,7 @@ const Order = {
             key: 'id',
         }
     },
-    statusId: {
+    orderStatusId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {

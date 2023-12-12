@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 
-// MenuItem model
-const MenuItem = {
+// Item model
+const Item = {
     
     id: {
         type: DataTypes.UUID,
@@ -32,4 +32,4 @@ const MenuItem = {
     }
 };
 
-module.exports = MenuItem;
+module.exports = Item;

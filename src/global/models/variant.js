@@ -13,6 +13,15 @@ const Variant = {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    itemIMG: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    isAvailable: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+    },
     extraCharge: {
         type: DataTypes.FLOAT,
         allowNull: false,

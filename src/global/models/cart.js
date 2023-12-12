@@ -9,10 +9,11 @@ const Cart = {
         allowNull: false,
         defaultValue: DataTypes.UUIDV4,
     },
-    orderedItemId: {
+    itemId: {
         type: DataTypes.UUID,
+        allowNull: false,
         refernces: {
-            model: 'orderedItems',
+            model: 'items',
             key: 'id',
         }
     },
@@ -23,6 +24,11 @@ const Cart = {
             model: 'users',
             key: 'id',
         }
+    },
+    quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 1
     }
 };
 

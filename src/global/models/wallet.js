@@ -9,14 +9,6 @@ const Wallet = {
         allowNull: false,
         defaultValue: DataTypes.UUIDV4,
     },
-    userId: {
-        type: DataTypes.UUID,
-        allowNull: false,
-        references: {
-            model: 'users',
-            key: 'id'
-        }
-    },
     balance: {
         type: DataTypes.FLOAT,
         allowNull: false,

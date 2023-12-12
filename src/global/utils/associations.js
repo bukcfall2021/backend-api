@@ -1,25 +1,33 @@
 const createAssociations = async (models) => {
     
     //User Associations
-    models.User.belongsToMany(models.Address, {through: models.UserAddress});
+    models.User.hasMany(models.Address);
+    models.Address.belongsTo(models.User);
     models.User.hasMany(models.Review);
-    models.User.hasOne(models.Wallet);
+    models.Review.belongsTo(models.User);
+    models.Wallet.hasOne(models.User);
 
     //Promo Associations
-    models.AvailedPromo.hasMany(models.User);
-    models.AvailedPromo.hasMany(models.Promo);
+    models.AvailedPromo.belongsTo(models.User);
+    models.User.hasMany(models.AvailedPromo);
+    models.AvailedPromo.belongsTo(models.Promo);
+    models.Promo.hasMany(models.AvailedPromo);
 
     //Menu Item Associations
-    models.Item.belongsToMany(models.Variant, {through: models.ItemVariant});
+    models.Variant.belongsToMany(models.Item, {through: 'item-variants', timestamps: false});
+
+    //Cart Associations
+    models.User.hasMany(models.Cart);
+    models.Cart.belongsTo(models.User);
 
     //Ordered Item Associations
-    models.Cart.hasMany(models.OrderedItem);
-    models.Item.belongsToMany(models.OrderedItem, {through: models.ItemOrderedItem});
-    models.OrderedItem.belongsToMany(models.Order, {through: models.OrderOrderedItem});
+    models.Item.hasOne(models.OrderedItem);
+    models.OrderedItem.belongsTo(models.Order);
+    models.Order.hasMany(models.OrderedItem);
     
     //Order Associations
-    models.Order.hasOne(models.OrderStatus);
-    models.Order.hasMany(models.Rider);
+    models.OrderStatus.hasOne(models.Order);
+    models.Rider.hasOne(models.Order);
 
 };
 
