@@ -16,7 +16,6 @@ const WalletModel = require('../models/wallet');
 const syncModels = async (sequelize, app) => {
 
   const queryInterface = sequelize.getQueryInterface();
-  await queryInterface.dropAllTables();
 
   //Use req.app.locals.db.ModelName to access a model for querying 
   app.locals.db = {};
@@ -38,7 +37,7 @@ const syncModels = async (sequelize, app) => {
   await createAssociations(app.locals.db);
 
   //If force: true, then all tables will be dropped, and data lost
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ force: false });
 };
 
 module.exports = syncModels;
