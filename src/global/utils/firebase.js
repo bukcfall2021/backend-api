@@ -1,5 +1,5 @@
 const {initializeApp} = require('firebase/app');
-const {getStorage, ref, getStream, deleteObject, uploadBytes} = require('firebase/storage');
+const {getStorage, ref, getDownloadURL, deleteObject, uploadBytes} = require('firebase/storage');
 const appConstants = require('../constants/appConstants');
 
 const firebase = initializeApp(appConstants.FIREBASE_CONFIG);
@@ -15,10 +15,10 @@ module.exports.putImage = (key, buffer, type) => {
 
 };
 
-module.exports.getImage = async (key) => {
+module.exports.getImage = (key) => {
 
     const imageRef = ref(storage, key)
-    return getStream(imageRef);
+    return getDownloadURL(imageRef);
 
 };
 
