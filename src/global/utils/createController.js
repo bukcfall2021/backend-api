@@ -23,6 +23,7 @@ const createController = (
             Rider: Model,
             OrderStatus: Model,
             ItemVariant: Model,
+            Category: Model,
           },
         },
       },
