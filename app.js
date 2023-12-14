@@ -4,6 +4,9 @@ const appConstants = require("./src/global/constants/appConstants");
 const verifyJWT = require("./src/global/middlewares/verifyJWT");
 const app = express();
 
+const imageUtil = require('./src/global/utils/firebase')
+const multer = require('./src/global/middlewares/multerUpload')
+
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
