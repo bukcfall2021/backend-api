@@ -11,6 +11,10 @@ module.exports.signup = createController(async (req, res) => {
 
     const data = req.body;
 
+    if(!data || !data.name || !data.email || !data.password){
+        return res.status(400).send({error: "Invalid Input"});
+    }
+
     //Checking if User already exists 
     const findUser = await User.findOne({where: {email: data.email}});
     if (findUser != undefined){
@@ -48,6 +52,10 @@ module.exports.login = createController(async (req, res) => {
 
     const User = req.app.locals.db.User;
     const data = req.body;
+
+    if(!data || !data.email || !data.password){
+        return res.status(400).send({error: "Invalid Input"});
+    }
 
     try {
         //Finding if User exists or not

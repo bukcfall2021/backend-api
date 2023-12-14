@@ -18,18 +18,29 @@ module.exports.create = createController(async (req, res) => {
     }
 
     try {
-        
         //Creating Category
         const category = await Category.create({
             category: data
         });
-
         return res.status(200).send({category: category});
 
     } catch (err) {
 
         return res.status(500).send({error: err});
+    }
+
+});
+
+module.exports.get = createController(async (req, res) => {
+
+    const Category = req.app.locals.db.Category;
+    try {
         
+        const category = await Category.findAll();
+        return res.status(200).send({category: category});
+
+    } catch (err) {
+        return res.status(500).send({error: err});
     }
 
 });
