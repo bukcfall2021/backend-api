@@ -9,6 +9,13 @@ const Item = {
         allowNull: false,
         defaultValue: DataTypes.UUIDV4,
     },
+    categoryId: {
+        type: DataTypes.UUID,
+        references: {
+            model: 'categories',
+            key: 'id',
+        }
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false,

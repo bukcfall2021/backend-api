@@ -15,6 +15,8 @@ const createAssociations = async (models) => {
 
     //Menu Item Associations
     models.Variant.belongsToMany(models.Item, {through: models.ItemVariant});
+    models.Category.hasMany(models.Item);
+    models.Item.belongsTo(models.Category);
 
     //Cart Associations
     models.User.hasMany(models.Cart);
