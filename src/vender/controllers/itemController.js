@@ -14,28 +14,23 @@ module.exports.create = createController(async (req, res) => {
 
     const itemFind = await Item.findOne({where: {name: data.name}});
     if(itemFind){
-        return res.status(409).send({error: "Item Already Exists"});
+        return res.status(409).send({error: "Item Already Exists", item: itemFind});
     }
 
     const key = `item/${v4()}`;
 
     try {
         //Uploading image
-        imageUtil.putImage(key, req.file.buffer, req.file.mimetype)
-        .then(async (snapshot) => {
-            //Creating item
-            const item = await Item.create({
-                name: data.name,
-                description: data.description,
-                price: data.price,
-                itemIMG: key,
-                isAvailable: data.isAvailable || false
-            })
-            return res.status(200).send({item: item, snapshot: snapshot});
+        const snapshot = await imageUtil.putImage(key, req.file.buffer, req.file.mimetype)
+        //Creating item
+        const item = await Item.create({
+            name: data.name,
+            description: data.description,
+            price: data.price,
+            itemIMG: key,
+            isAvailable: data.isAvailable || false
         })
-        .catch((error) => {
-            return res.status(500).send({error: err});
-        })
+        return res.status(200).send({item: item, snapshot: snapshot});
 
     } catch (err) {
         return res.status(500).send({error: err});
