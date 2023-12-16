@@ -1,5 +1,5 @@
-const createController = require('../../../global/utils/createController');
-const appConstants = require('../../../global/constants/appConstants');
+const createController = require('../../global/utils/createController');
+const appConstants = require('../../global/constants/appConstants');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
