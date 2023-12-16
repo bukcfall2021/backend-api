@@ -13,8 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(require("cors")());
 
 // routes
-// ::auth: handles authentication (login/sign up)
-app.use("/api/auth", require('./src/auth/authRoute'));
 // ::item: handles item changes
 app.use('/api/item', require('./src/item/itemRoute'));                                                                  
 // ::user: handles user actions
