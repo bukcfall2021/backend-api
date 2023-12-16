@@ -3,7 +3,7 @@ const appConstants = require('../../global/constants/appConstants');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// api/auth/user/signup
+// api/user/auth/signup
 module.exports.signup = createController(async (req, res) => {
 
     const User = req.app.locals.db.User;
@@ -47,7 +47,7 @@ module.exports.signup = createController(async (req, res) => {
 
 });
 
-// api/auth/user/login
+// api/user/auth/login
 module.exports.login = createController(async (req, res) => {
 
     const User = req.app.locals.db.User;
@@ -70,7 +70,7 @@ module.exports.login = createController(async (req, res) => {
         }
         
         const token = jwt.sign({user: user}, appConstants.JWT_SECRET);
-        return res.cookie('token', token, {httpOnly: true}).status(200).send();
+        return res.cookie('token', token, {httpOnly: true}).status(200).send({user: user});
 
     } catch (err) {
 

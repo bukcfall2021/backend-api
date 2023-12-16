@@ -42,7 +42,10 @@ const Order = {
         type: DataTypes.FLOAT,
         allowNull: false,
     },
-    estimatedTime: DataTypes.TIME,
+    estimatedTime: {
+        type: DataTypes.TIME,
+        defaultValue: Sequelize.NOW,
+    },
 };
 
 module.exports = Order;

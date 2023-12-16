@@ -28,7 +28,8 @@ module.exports.create = createController(async (req, res) => {
             description: data.description,
             price: data.price,
             itemIMG: key,
-            isAvailable: data.isAvailable || false
+            isAvailable: data.isAvailable || false,
+            categoryId: data.categoryId || null
         })
         return res.status(200).send({item: item, snapshot: snapshot});
 
