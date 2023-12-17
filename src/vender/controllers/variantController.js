@@ -13,7 +13,7 @@ module.exports.get = variantController(async (req, res) => {
     }
 
     try {
-        const itemVariants = await ItemVariant.findAll({where: {itemId: data.itemId}});
+        const itemVariants = await ItemVariant.findAll({where: {id: data.id}});
         if (!itemVariants) {
             return res.status(404).send({error: "Item Variants Not Found"});
         }
@@ -40,7 +40,7 @@ module.exports.create = variantController(async (req, res) => {
     const ItemVariant = req.app.locals.db.ItemVariant;
     const data = req.body;
 
-    if(!data || !data.variantName || !data.extraCharge || !data.itemId){
+    if(!data || !data.variantName || !data.extraCharge || !data.isAvailable || !data.isDefault){
         return res.status(400).send({error: "Invalid Input"});
     }
 
@@ -82,11 +82,11 @@ module.exports.update = variantController(async (req, res) => {
     const Variant = req.app.locals.db.Variant;
     const data = req.body;
 
-    if (!data || !data.variantId) {
+    if (!data || !data.variantName || !data.extraCharge || !data.isAvailable || !data.isDefault) {
         return res.status(400).send({error: "Invalid Input"});
     }
 
-    const variantFind = await Variant.findOne({where: {id: data.variantId}});
+    const variantFind = await Variant.findOne({where: {id: data.id}});
     if (!variantFind) {
         return res.status(404).send({error: "Variant Not Found"});
     }
