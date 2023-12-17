@@ -6,7 +6,7 @@ module.exports.edit = createController(async (req, res) => {
     const data = req.body;
 
     if(!data || !data.id){
-        return res.status(400).send({error: "Insufficient Data"});
+        return res.status(400).send({error: "Insufficient or Invalid Data"});
     }
 
     try {
@@ -74,7 +74,7 @@ module.exports.addAddress = createController(async (req, res) => {
     const data = req.body;
 
     if(!data || !data.id || !data.address || !data.city){
-        return res.status(400).send({error: "Insufficient Data"});
+        return res.status(400).send({error: "Insufficient or Invalid Data"});
     }
 
     try {
@@ -103,6 +103,20 @@ module.exports.deleteAddress = createController(async (req, res) => {
     const Address = req.app.locals.db.Address;
     const data = req.body;
 
-    
+    if(!data || !data.id){
+        return res.status(400).send({error: "Insufficient or Invalid Data"});
+    }
+
+    try {
+
+        const deleted = await Address.destroy({where: {id: data.id}});
+        if(!deleted){
+            throw error;
+        }
+        return res.status(200).send({success: true, message: "Address Deleted"});
+        
+    } catch (error) {
+        return res.status(500).send({error: error});
+    }
 
 });
