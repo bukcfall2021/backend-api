@@ -24,6 +24,8 @@ app.use("/api/rider", require("./src/rider/riderRoute"));
 // ::kitchen: relays kitchen status
 app.use("/api/kitchen", require("./src/kitchen/kitchenRoute"));
 
+app.get('/', (req, res) => {console.log("Sup")})
+
 connectToDB(app).then((ok) => {
   if (ok) {
     app.listen(appConstants.PORT, () => {
