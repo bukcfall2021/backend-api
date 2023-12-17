@@ -17,6 +17,13 @@ const Cart = {
             key: 'id',
         }
     },
+    variantId: {
+        type: DataTypes.UUID,
+        references: {
+            model: 'variants',
+            key: 'id'
+        }
+    },
     userId: {
         type: DataTypes.UUID,
         allowNull: false, 

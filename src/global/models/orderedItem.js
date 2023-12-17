@@ -25,6 +25,13 @@ const OrderedItem = {
             key: 'id',
         }
     },
+    variantId: {
+        type: DataTypes.UUID,
+        references: {
+            model: 'variants',
+            key: 'id'
+        }
+    },
     quantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
