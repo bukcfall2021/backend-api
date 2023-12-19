@@ -21,6 +21,7 @@ const createAssociations = async (models) => {
     //Cart Associations
     models.User.hasMany(models.Cart);
     models.Cart.belongsTo(models.User);
+    models.Variant.hasOne(models.Cart);
 
     //Ordered Item Associations
     models.Item.hasOne(models.OrderedItem);
@@ -30,6 +31,7 @@ const createAssociations = async (models) => {
     //Order Associations
     models.OrderStatus.hasOne(models.Order);
     models.Rider.hasOne(models.Order);
+    models.Promo.hasOne(models.Order);
 
 };
 

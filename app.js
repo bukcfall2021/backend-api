@@ -4,9 +4,6 @@ const appConstants = require("./src/global/constants/appConstants");
 const verifyJWT = require("./src/global/middlewares/verifyJWT");
 const app = express();
 
-const imageUtil = require('./src/global/utils/firebase')
-const multer = require('./src/global/middlewares/multerUpload')
-
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,6 +20,10 @@ app.use("/api/vender", require("./src/vender/venderRoute"));
 app.use("/api/rider", require("./src/rider/riderRoute"));
 // ::kitchen: relays kitchen status
 app.use("/api/kitchen", require("./src/kitchen/kitchenRoute"));
+// ::categories: checks item categories
+app.use("/api/category", require('./src/category/categoryRoute'));
+// ::image: image operations
+app.use("/api/image", require('./src/image/imageRoute'));
 
 connectToDB(app).then((ok) => {
   if (ok) {

@@ -18,6 +18,11 @@ const Address = {
         allowNull: false,
     },
     landmark: DataTypes.STRING,
+    isDefault: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+    },
     userId: {
         type: DataTypes.UUID,
         allowNull: false,

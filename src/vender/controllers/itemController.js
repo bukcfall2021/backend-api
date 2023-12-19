@@ -12,28 +12,31 @@ module.exports.create = itemController(async (req, res) => {
         return res.status(400).send({error: "Invalid Input"});
     }
 
-    const itemFind = await Item.findOne({where: {name: data.name}});
-    if(itemFind){
-        return res.status(409).send({error: "Item Already Exists", item: itemFind});
-    }
-
     const key = `item/${v4()}`;
-
     try {
+        const itemFind = await Item.findOne({where: {name: data.name}});
+        if(itemFind){
+            return res.status(409).send({error: "Item Already Exists", item: itemFind});
+        }
         //Uploading image
-        const snapshot = await imageUtil.putImage(key, req.file.buffer, req.file.mimetype)
+        try{
+            await imageUtil.putImage(key, req.file.buffer, req.file.mimetype)
+        }catch(error){
+            throw error;
+        }
         //Creating item
         const item = await Item.create({
             name: data.name,
             description: data.description,
             price: data.price,
             itemIMG: key,
-            isAvailable: data.isAvailable || false
+            isAvailable: data?.isAvailable,
+            categoryId: data?.categoryId
         })
-        return res.status(200).send({item: item, snapshot: snapshot});
+        return res.status(200).send({item: item, success: true});
 
-    } catch (err) {
-        return res.status(500).send({error: err});
+    } catch (error) {
+        return res.status(500).send({error: error});
     }
 
 });

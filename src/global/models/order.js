@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
+const thirtyMinutesLater = Sequelize.literal('NOW() + INTERVAL 30 MINUTE');
 
 // Order model
 const Order = {
@@ -27,10 +28,16 @@ const Order = {
     },
     riderId: {
         type: DataTypes.UUID,
-        allowNull: false,
         references: {
             model: 'riders',
             key: 'id'
+        }
+    },
+    promoId: {
+        type: DataTypes.UUID,
+        references: {
+            model: 'promos',
+            key: 'id',
         }
     },
     orderDate: {
@@ -42,7 +49,10 @@ const Order = {
         type: DataTypes.FLOAT,
         allowNull: false,
     },
-    estimatedTime: DataTypes.TIME,
+    estimatedTime: {
+        type: DataTypes.TIME,
+        allowNull: false,
+    },
 };
 
 module.exports = Order;
