@@ -1,6 +1,6 @@
-const createController = require('../../../global/utils/createController');
+const createController = require('../../global/utils/createController');
 
-// api/item/category/all
+// api/category/get/all
 module.exports.get = createController(async (req, res) => {
 
     const Category = req.app.locals.db.Category;

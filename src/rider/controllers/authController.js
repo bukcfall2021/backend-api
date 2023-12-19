@@ -28,7 +28,7 @@ module.exports.signup = createController(async (req, res) => {
             password: encryptedPassword,
             phone: data.phone,
         })
-        const token = jwt.sign({rider: rider}, appConstants.JWT_SECRET)
+        const token = jwt.sign({rider: rider}, appConstants.JWT_SECRET, {expiresIn: '10h'})
         return res.status(200).send().cookie('token', token, {httpOnly: true});
         
     } catch (err) {
@@ -59,7 +59,7 @@ module.exports.login = createController(async (req, res) => {
             return res.status(401).send({error: "Incorrect Credentials"});
         }
         
-        const token = jwt.sign({rider: rider}, appConstants.JWT_SECRET);
+        const token = jwt.sign({rider: rider}, appConstants.JWT_SECRET, {expiresIn: '10h'});
         return res.cookie('token', token, {httpOnly: true}).status(200).send({rider: rider});
 
     } catch (err) {
