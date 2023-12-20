@@ -46,8 +46,9 @@ module.exports.update = itemController(async (req, res) => {
 
     const Item = req.app.locals.db.Item;
     const data = req.body;
+    const id = req.params.id;
 
-    if(!data || !data.name || !data.description || !data.price){
+    if(!data || !data.id || !data.name || !data.description || !data.price){
         return res.status(400).send({error: "Invalid Input"});
     }
 
@@ -77,6 +78,7 @@ module.exports.delete = itemController(async (req, res) => {
 
     const Item = req.app.locals.db.Item;
     const data = req.body;
+    const id = req.params.id;
 
     if(!data || !data.id){
         return res.status(400).send({error: "Invalid Input"});
