@@ -19,7 +19,7 @@ module.exports.signup = createController(async (req, res) => {
     
     //Checking if User already exists 
     const findUser = await User.findOne({where: {email: data.email}});
-    if (findUser != undefined){
+    if (findUser){
         return res.status(401).send({error: "Email Already In Use"});
     }
     
@@ -29,10 +29,14 @@ module.exports.signup = createController(async (req, res) => {
 
     try {
 
-        if(req.file){
-            await imageUtil.putImage(key, req.file.buffer, req.file.mimetype);
-        }
         const key = `user/${v4()}`;
+        if(req.file){
+            try {
+                await imageUtil.putImage(key, req.file.buffer, req.file.mimetype);
+            } catch (error) {
+                throw error;
+            }
+        }
         
         //Creating User and JWT
         const user = await User.create({
@@ -49,8 +53,8 @@ module.exports.signup = createController(async (req, res) => {
 
     } catch (err) {
 
-      await wallet.destroy();
-      return res.status(500).send({error: err});
+        await wallet.destroy();
+        return res.status(500).send({error: err});
 
     }
 

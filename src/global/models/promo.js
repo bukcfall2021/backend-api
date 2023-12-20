@@ -20,6 +20,7 @@ const Promo = {
     code: {
         type: DataTypes.STRING(8),
         allowNull: false,
+        unique: true,
     },
     
 };

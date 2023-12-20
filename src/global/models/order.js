@@ -1,5 +1,4 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const thirtyMinutesLater = Sequelize.literal('NOW() + INTERVAL 30 MINUTE');
 
 // Order model
 const Order = {
@@ -21,6 +20,7 @@ const Order = {
     orderStatusId: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        defaultValue: 0,
         references: {
             model: 'order_statuses',
             key: 'id',

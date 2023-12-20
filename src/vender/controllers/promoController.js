@@ -35,7 +35,7 @@ module.exports.create = promoController(async (req, res) => {
 
         const promo = await Promo.create({
             expiryDate: data.expiryDate,
-            discountPercentage: data.discountPercentage,
+            discountPercentage: data.discountPercentage/100,
             code: data.code
         });
         return res.status(200).send({promo: promo});
