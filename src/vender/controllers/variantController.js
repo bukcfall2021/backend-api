@@ -85,6 +85,7 @@ module.exports.update = variantController(async (req, res) => {
 
     const Variant = req.app.locals.db.Variant;
     const data = req.body;
+    const id = req.params.id;
 
     if (!data || !data.id) {
         return res.status(400).send({error: "Invalid Input"});

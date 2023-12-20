@@ -50,6 +50,7 @@ module.exports.update = promoController(async (req, res) => {
 
     const Promo = req.app.locals.db.Promo;
     const data = req.body;
+    const id = req.params.id;
 
     if(!data || !data.id){
         return res.status(400).send({error: "Invalid Input"});
